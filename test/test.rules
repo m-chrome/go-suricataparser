@@ -1,0 +1,6 @@
+# Rule
+alert tcp any any -> any any (sid:1;)
+
+# Multiline rule
+alert tcp any any -> any any (msg:"Msg"; \
+sid:1;)
