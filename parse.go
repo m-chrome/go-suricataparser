@@ -49,6 +49,7 @@ func parseOptions(buffer string) ([]*Option, error) {
 	return options, nil
 }
 
+// ParseRule from raw string
 func ParseRule(buffer string) (*Rule, error) {
 	matches := ruleRegExp.FindAllSubmatch([]byte(buffer), -1)
 	if matches == nil || (len(matches) != 1 && len(matches[0]) != 5) {
@@ -97,6 +98,7 @@ func ParseRule(buffer string) (*Rule, error) {
 	return NewRule(enabled, action, header, raw, options), nil
 }
 
+// ParseFile with rules from filesystem
 func ParseFile(path string) ([]*Rule, error) {
 	readFile, err := os.Open(path)
 	defer readFile.Close()

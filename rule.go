@@ -33,22 +33,27 @@ func (r *Rule) String() string {
 	return ruleStr
 }
 
+// Sid - rule ID - https://suricata.readthedocs.io/en/latest/rules/meta.html#sid-signature-id
 func (r *Rule) Sid() int64 {
 	return r.sid
 }
 
+// Gid - group ID - https://suricata.readthedocs.io/en/latest/rules/meta.html#gid-group-id
 func (r *Rule) Gid() int64 {
 	return r.gid
 }
 
+// Msg - rule description - https://suricata.readthedocs.io/en/latest/rules/meta.html#msg-message
 func (r *Rule) Msg() string {
 	return r.msg
 }
 
+// Rev rule revision (version) - https://suricata.readthedocs.io/en/latest/rules/meta.html#rev-revision
 func (r *Rule) Rev() int64 {
 	return r.rev
 }
 
+// Header defines the protocol, IP addresses, ports and direction of the rule
 func (r *Rule) Header() string {
 	return r.header
 }
