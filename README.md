@@ -2,7 +2,8 @@
 
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/m-chrome/go-suricataparser)](https://pkg.go.dev/github.com/m-chrome/go-suricataparser)
 
-Pure Golang port of [py-suricataparser](https://github.com/m-chrome/py-suricataparser) with same functions.
+Pure Golang port of [py-suricataparser](https://github.com/m-chrome/py-suricataparser) with same functions - 
+parsing and generating Snort/Suricata rules.
 
 ## Installation
 
