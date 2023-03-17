@@ -2,40 +2,19 @@
 
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/m-chrome/go-suricataparser)](https://pkg.go.dev/github.com/m-chrome/go-suricataparser)
 
-Pure Golang port of [py-suricataparser](https://github.com/m-chrome/py-suricataparser) with same functions.
+Pure Golang port of [py-suricataparser](https://github.com/m-chrome/py-suricataparser) with same functions - 
+parsing and generating Snort/Suricata rules.
 
 ## Installation
 
 go-suricataparser supports Go 1.18 or higher.
 
 ```shell
-go get https://github.com/m-chrome/go-suricataparser
+go get https://github.com/m-chrome/go-suricataparser@latest
 ```
 
 ## Usage
 
-```go
-package main
+Parsing rule from files and strings example [here](example_parse_test.go).
 
-import (
-	"fmt"
-	
-	"github.com/m-chrome/go-suricataparser"
-)
-
-func main() {
-	// Parse rules file
-	rules, _ := suricataparser.ParseFile("suricata.rules")
-	for _, r := range rules {
-		fmt.Println(r)
-	}
-	
-	// Parse rule from string
-	rule, _ := suricataparser.ParseRule("alert http any any -> [1.1.1.1, 1.1.1.2] any (sid:1; rev:1; gid:1; http_uri; msg:"message";)")
-	fmt.Println(rule)
-	
-	// Disable rule
-	rule.Enabled = false
-	fmt.Println(rule)
-}
-```
+Building rule with package functions example [here](example_build_test.go).

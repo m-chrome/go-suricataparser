@@ -17,7 +17,7 @@ type Option struct {
 	Value string
 }
 
-func (o *Option) String() string {
+func (o Option) String() string {
 	if o.Value == "" {
 		return fmt.Sprintf("%s;", o.Name)
 	}
@@ -32,4 +32,9 @@ func NewOption(name, value string) Option {
 // NewEmptyOption returns rule metadata option with empty value
 func NewEmptyOption(name string) Option {
 	return Option{Name: name, Value: ""}
+}
+
+// NewMsgOption returns rule message description option
+func NewMsgOption(message string) Option {
+	return Option{Name: OptMsg, Value: fmt.Sprintf("\"%s\"", message)}
 }
