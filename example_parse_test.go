@@ -33,3 +33,10 @@ func ExampleParseRule() {
 	// false
 	// # alert http any any -> [1.1.1.1] any (sid:1; rev:1; gid:1; http_uri; msg:"message";)
 }
+
+func ExampleParseFile() {
+	rules, _ := suricataparser.ParseFile("test/test.rules")
+	fmt.Println(len(rules))
+	// Output:
+	// 2
+}
