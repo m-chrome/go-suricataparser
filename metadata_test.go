@@ -41,3 +41,13 @@ func TestPopMeta(t *testing.T) {
 	m.PopMeta("malware_family")
 	assert.Len(t, m.items, 0)
 }
+
+func TestMerge(t *testing.T) {
+	m1, err := ParseMetadata("malware_family Crypton, malware_family Nemesis")
+	require.NoError(t, err)
+	m2, err := ParseMetadata("malware_family Crypton, malware_family Nemesis")
+	require.NoError(t, err)
+	assert.Len(t, m1.Items(), 2)
+	m1.Merge(*m2)
+	assert.Len(t, m1.Items(), 4)
+}

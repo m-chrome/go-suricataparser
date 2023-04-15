@@ -31,3 +31,14 @@ func TestBuildRule(t *testing.T) {
 	require.NotNil(t, r)
 	assert.Equal(t, "alert any any -> any any (http_uri; sid:1;)", r.raw)
 }
+
+func TestParseRuleWithNMetadata(t *testing.T) {
+	raw := "# alert tcp any any -> any any (sid:1; " +
+		"classtype:trojan; http_uri; metadata: severity low; metadata: severity low;)"
+	r, err := ParseRule(raw)
+	require.NoError(t, err)
+	assert.Equal(t, []string{
+		"severity low",
+		"severity low",
+	}, r.Metadata.Items())
+}
