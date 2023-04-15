@@ -13,6 +13,11 @@ go-suricataparser supports Go 1.18 or higher.
 go get https://github.com/m-chrome/go-suricataparser@latest
 ```
 
+## Status
+
+Package is stable. New api may be appeared. 
+Any bugfixes and improvements are welcomed. 
+
 ## Usage
 
 Parsing rule from files and strings example [here](example_parse_test.go).
