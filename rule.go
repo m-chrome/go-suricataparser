@@ -101,9 +101,14 @@ func (r *Rule) fillFromOptions() {
 			r.classtype = opt.Value
 		}
 		if opt.Name == OptMetadata {
-			r.Metadata, _ = ParseMetadata(opt.Value)
+			r.fillMetadata(opt.Value)
 		}
 	}
+}
+
+func (r *Rule) fillMetadata(rawMetadata string) {
+	parsed, _ := ParseMetadata(rawMetadata)
+	r.Metadata.Merge(*parsed)
 }
 
 func NewRule(enabled bool, action, header, raw string, options []*Option) *Rule {

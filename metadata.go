@@ -16,7 +16,11 @@ func (m *Metadata) String() string {
 }
 
 func (m *Metadata) AddMeta(key, value string) {
-	m.items = append(m.items, fmt.Sprintf("%s %s", key, value))
+	m.AddItem(fmt.Sprintf("%s %s", key, value))
+}
+
+func (m *Metadata) AddItem(item string) {
+	m.items = append(m.items, item)
 }
 
 func (m *Metadata) PopMeta(key string) {
@@ -27,6 +31,12 @@ func (m *Metadata) PopMeta(key string) {
 		}
 	}
 	m.items = newItems
+}
+
+func (m *Metadata) Merge(metadata Metadata) {
+	for _, item := range metadata.Items() {
+		m.AddItem(item)
+	}
 }
 
 func (m *Metadata) Items() []string {
