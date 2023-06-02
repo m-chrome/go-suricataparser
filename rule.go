@@ -53,6 +53,11 @@ func (r *Rule) Rev() int64 {
 	return r.rev
 }
 
+// ClassType rule class type - https://docs.suricata.io/en/latest/rules/meta.html#classtype
+func (r *Rule) ClassType() string {
+	return r.classtype
+}
+
 // Header defines the protocol, IP addresses, ports and direction of the rule
 func (r *Rule) Header() string {
 	return r.header
