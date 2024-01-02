@@ -8,11 +8,12 @@ import (
 
 // Rule stores parsed suricata rule - https://suricata.readthedocs.io/en/latest/rules/intro.html#rules-format
 type Rule struct {
-	Enabled  bool
-	action   string
-	header   string
-	Options  []*Option
-	Metadata *Metadata
+	Enabled    bool
+	action     string
+	header     string
+	Options    []*Option
+	Metadata   *Metadata
+	References []*Reference
 
 	sid       int64
 	gid       int64
@@ -108,12 +109,20 @@ func (r *Rule) fillFromOptions() {
 		if opt.Name == OptMetadata {
 			r.fillMetadata(opt.Value)
 		}
+		if opt.Name == OptReference {
+			r.addReference(opt.Value)
+		}
 	}
 }
 
 func (r *Rule) fillMetadata(rawMetadata string) {
 	parsed, _ := ParseMetadata(rawMetadata)
 	r.Metadata.Merge(*parsed)
+}
+
+func (r *Rule) addReference(rawReference string) {
+	parsed, _ := ParseReference(rawReference)
+	r.References = append(r.References, parsed)
 }
 
 func NewRule(enabled bool, action, header, raw string, options []*Option) *Rule {
