@@ -9,6 +9,7 @@ const (
 	OptMsg       = "msg"
 	OptRev       = "rev"
 	OptSid       = "sid"
+	OptReference = "reference"
 )
 
 // Option stores parsed option from rule - https://suricata.readthedocs.io/en/latest/rules/intro.html#rule-options
